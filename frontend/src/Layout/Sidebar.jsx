@@ -8,26 +8,21 @@ const SidebarContext = React.createContext();
 const Sidebar = ({ children }) => {
   const [expand, setExpand] = useState(true);
   return (
-    <aside
-      className={`h-screen  overflow-hidden transition-all ${
-        expand ? "w-52" : "w-16"
-      } 
-      }`}
-    >
+    <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white border-r-2 shadow-lg">
         <div className="p-4 pb-2 flex items-center justify-between">
           <img
             src={logo}
             alt="logo"
             className={`overflow-hidden transition-all ${
-              expand ? "w-20" : "w-0"
+              expand ? "w-20 " : "w-0 "
             }`}
           />
           <button
             onClick={() => {
               setExpand(!expand);
             }}
-            className="bg-blue-200 p-1.5 rounded-lg hover:bg-blue-300"
+            className={`bg-blue-200 p-1.5 rounded-lg hover:bg-blue-300 `}
           >
             {expand ? <SlArrowLeft size={20} /> : <SlArrowRight size={20} />}
           </button>
@@ -56,11 +51,12 @@ const Sidebar = ({ children }) => {
     </aside>
   );
 };
-export function SidebarItem({ icon, text, active, alert }) {
+export function SidebarItem({ icon, text, active = false, alert, onClick }) {
   const { expand } = useContext(SidebarContext);
 
   return (
     <li
+      onClick={onClick}
       className={`
       mt-3
         relative flex items-center py-1 px-2 my-1

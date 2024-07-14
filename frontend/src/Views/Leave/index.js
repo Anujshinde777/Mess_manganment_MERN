@@ -1,11 +1,11 @@
 import React from 'react'
 
-const DashBoard = () => {
+const index = () => {
   return (
     <div>
-      
+      <h1>Leave</h1>
     </div>
   )
 }
 
-export default 'DashBoard'
+export default index
